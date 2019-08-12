@@ -3,9 +3,9 @@ import 'package:pokedex/models/PokemonsModel.dart';
 import 'package:pokedex/widgets/PokemonCard/index.dart';
 
 class PokemonList extends StatelessWidget {
-  final PokemonsModel pokemons;
+  final List<Pokemon> pokemons;
 
-  PokemonList(this.pokemons);
+  const PokemonList({Key key, this.pokemons}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PokemonList extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
-        itemCount: pokemons.count,
+        itemCount: pokemons.length,
         itemBuilder: (context, index) => PokemonCard(),
       ),
     );

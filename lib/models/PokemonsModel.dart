@@ -1,17 +1,24 @@
-class PokemonsModel {
-  final int count;
-  final String next;
-  final String previous;
-  final List<dynamic> results;
+class PokemonsResponse {
+  int count;
+  List<Pokemon> results;
 
-  PokemonsModel({this.count, this.next, this.previous, this.results});
+  PokemonsResponse.fromJson(Map<String, dynamic> json) {
+    count = json['count'];
+    if (json['results'] != null) {
+      results = new List<Pokemon>();
+      json['results'].forEach((v) {
+        results.add(new Pokemon.fromJson(v));
+      });
+    }
+  }
+}
 
-  factory PokemonsModel.fromJson(Map json) {
-    return PokemonsModel(
-      count: json['count'],
-      next: json['next'],
-      previous: json['prev'],
-      results: json['results'],
-    );
+class Pokemon {
+  String name;
+  String url;
+
+  Pokemon.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    url = json['url'];
   }
 }
