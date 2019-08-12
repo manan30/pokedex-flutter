@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/models/PokemonsModel.dart';
+import 'package:pokedex/widgets/PokemonCard/index.dart';
 
 class PokemonList extends StatelessWidget {
+  final PokemonsModel pokemons;
+
+  PokemonList(this.pokemons);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,18 +15,8 @@ class PokemonList extends StatelessWidget {
       ),
       body: ListView.builder(
         padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
-        itemCount: 20,
-        itemBuilder: (context, index) => _PokemonCard(),
-      ),
-    );
-  }
-
-  Widget _PokemonCard() {
-    return Card(
-      elevation: 1.6,
-      child: Container(
-        height: 96,
-        child: Text(''),
+        itemCount: pokemons.count,
+        itemBuilder: (context, index) => PokemonCard(),
       ),
     );
   }
