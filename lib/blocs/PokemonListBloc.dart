@@ -4,7 +4,7 @@ import 'package:pokedex/models/PokemonsModel.dart';
 import 'package:pokedex/repository/PokemonRepository.dart';
 import 'package:pokedex/utils/API/APIResponse.dart';
 
-class PokemonBloc {
+class PokemonListBloc {
   PokemonRepository _pokemonRepository;
   StreamController _pokemonController;
 
@@ -14,7 +14,7 @@ class PokemonBloc {
   Stream<APIResponse<List<Pokemon>>> get pokemonListStream =>
       _pokemonController.stream;
 
-  PokemonBloc() {
+  PokemonListBloc() {
     _pokemonController = StreamController<APIResponse<List<Pokemon>>>();
     _pokemonRepository = PokemonRepository();
     fetchPokemons();
